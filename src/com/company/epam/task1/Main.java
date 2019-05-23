@@ -1,49 +1,40 @@
 package com.company.epam.task1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Main {
-
     public static void main(String[] args) {
+        taskArray();
+        taskList();
 
-        // Инициализация массива
-        Scanner sc = new Scanner (System.in);
-        System.out.print("Enter size of array: ");
-        int sizeOfArray = sc.nextInt();
+    }
 
+    public static void taskArray(){
+        Integer array[];
+        array = Array.createArray();
+        Array.printArray(array);
 
-        Integer array[] = new Integer[sizeOfArray];
-        for (int i = 0; i < sizeOfArray; i++) {
-            array[i] = (int) ((Math.random() * 12) - sizeOfArray);
-        }
-
-        // вывод созданого массива
-        System.out.println("Show array: ");
-        printArray(array);
-
-        // Метод для сортировки массива в порядке убивания
+        Arrays.sort(array,(a, b) -> b.compareTo(a));
         System.out.println("Show sort array: ");
-        Arrays.sort(array,(Integer::compareTo));
-        printArray(array);
-
+        Array.printArray(array);
     }
 
-    public static void printArray(Integer array[]){
-        System.out.print("Array: ");
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
+    public static void taskList(){
+        ArrayList<String> array = new ArrayList<>();
+
+        Scanner sc = new Scanner (System.in);
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Enter new word in list: ");
+            array.add(sc.nextLine());
         }
-        System.out.println();
+
+        System.out.println(array);
+
+        array.sort((a,b) -> b.compareTo(a));
+        System.out.println(array);
     }
 
-//    public static Integer createArray(int size){
-//        Integer[] newArray = new Integer[size];
-//        for (int i = 0; i < size; i++) {
-//            newArray[i] = (int) ((Math.random() * 10) - size);
-//        }
-//        return newArray[size];
-//    }
 }
-
-
