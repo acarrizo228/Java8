@@ -1,11 +1,11 @@
-package com.company.epam.task1;
+package com.company.epam.java8task;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.stream.Stream;
+import java.util.function.Predicate;
 
-public class Main {
+public class Task1 {
     public static void main(String[] args) {
         taskArray();
         taskList();
@@ -20,6 +20,8 @@ public class Main {
         Arrays.sort(array,(a, b) -> b.compareTo(a));
         System.out.println("Show sort array: ");
         Array.printArray(array);
+
+
     }
 
     public static void taskList(){

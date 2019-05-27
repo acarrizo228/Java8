@@ -1,6 +1,5 @@
-package com.company.epam.task1;
+package com.company.epam.java8task;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Array {

@@ -1,8 +1,8 @@
-package com.company.epam.task1;
+package com.company.epam.java8task;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,19 +14,14 @@ public class TaskStream {
     public static void main(String[] args) {
         task1();
 
-        ArrayList<Object> list = new ArrayList<>();
-        Person person;
-        for(int i = 0; i < 3 ; i++) {
-            System.out.println("Enter name: ");
-            String name = inputString();
-            System.out.println("Enter age: ");
-            int age = inputInt();
-            System.out.println("Enter gender: ");
-            String gender = inputString();
-            boolean armyMan = true;
 
-            list.add(new Person(name, age, gender, armyMan));
-        }
+        ArrayList<Person> list = new ArrayList<>();
+        list.add(new Person("Vlad",20,"male", "Yes"));
+        list.add(new Person("Max",20,"male", "No"));
+        list.add(new Person("Sasha",24,"male", "Yes"));
+        list.add(new Person("Masha",25,"female", "Yes"));
+        list.add(new Person("Vika",20,"female", "Yes"));
+        task3(list);
     }
 
     public static int inputInt(){
@@ -49,15 +44,33 @@ public class TaskStream {
 
         System.out.println(list);
     }
+
+
+    public static void task2(HashMap<String,String> list){
+
+    }
+    public static void task3(ArrayList<Person> list) {
+        System.out.println("\nMilitary men");
+        list.stream()
+                .filter(army -> army.isArmyMan() == "Yes")
+                .forEach(System.out::println);
+
+        System.out.println("\nAverage age of women");
+        list.stream()
+                .filter(army -> army.isArmyMan() == "Yes" && army.getGender() == "female")
+                .mapToInt(i -> i.age)
+                .average()
+                .ifPresent(avg -> System.out.println("Average found is " + avg));
+    }
 }
 
 class Person {
     String name;
     int age;
     String gender;
-    boolean armyMan;
+    String armyMan;
 
-    public Person(String name, int age, String gender, boolean armyMan) {
+    public Person(String name, int age, String gender, String armyMan) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -91,21 +104,23 @@ class Person {
         this.gender = gender;
     }
 
-    public boolean isArmyMan() {
+    public String isArmyMan() {
         return armyMan;
     }
 
-    public void setArmyMan(boolean armyMan) {
+    public void setArmyMan(String armyMan) {
         this.armyMan = armyMan;
     }
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", armyMan=" + armyMan +
-                '}';
+//        return "Person{" +
+//                "name='" + name + '\'' +
+//                ", age=" + age +
+//                ", gender='" + gender + '\'' +
+//                ", armyMan=" + armyMan +
+//                '}';
+        return "Name: " + name + '\'' +
+                ", age: '" + age + '\'';
     }
 }

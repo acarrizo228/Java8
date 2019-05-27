@@ -1,4 +1,4 @@
-package com.company.epam.task2;
+package com.company.epam.collectiontask;
 
 import java.util.*;
 
